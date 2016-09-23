@@ -1,0 +1,17 @@
+! ------------------------------------------------------------------------------
+! ! ROFI
+! ! ------------------------------------------------------------------------------
+rofi.modi: combi,window,run,ssh
+rofi.combi-modi: window,run,ssh
+rofi.location: 2
+rofi.font: Source Code Pro Medium 10
+rofi.lines: 50
+rofi.sidebar-mode: true
+rofi.disable-history: true
+rofi.terminal: terminator
+rofi.xoffset: -500
+rofi.color-enabled: true
+rofi.color-window: #002b37, #002b37, #003642
+rofi.color-normal: #002b37, #819396, #002b37, #003642, #819396
+rofi.color-active: #002b37, #008ed4, #002b37, #003642, #008ed4
+rofi.color-urgent: #002b37, #da4281, #002b37, #003642, #da4281
