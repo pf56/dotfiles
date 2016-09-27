@@ -181,7 +181,7 @@ new_window pixel
 # set keyboard layout
 exec --no-startup-id "setxkbmap de"
 exec --no-startup-id "xrdb ~/.Xresources"
-exec --no-startup-id "xmodmap ~/.Xmodmap"
+exec --no-startup-id "sleep 10 ; xmodmap ~/.Xmodmap"
 
 # start compton to enably vsync etc
 exec --no-startup-id compton -CGb --backend glx --vsync opengl
