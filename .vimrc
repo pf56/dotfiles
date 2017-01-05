@@ -5,6 +5,7 @@ filetype plugin indent on
 
 set encoding=utf-8
 set number
+set hidden
 
 " tabs appear 4 spaces wide
 set tabstop=4
@@ -20,6 +21,11 @@ colorscheme solarized
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 1
+
+" switch buffers
+map <F9> :bprevious<CR>
+map <F10> :bnext<CR>
 
 " syntastic
 set statusline+=%#warningmsg#
