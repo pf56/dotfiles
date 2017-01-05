@@ -4,6 +4,8 @@ status = i3pystatus.core.Status()
 
 status.register("clock", format="  %a %F  %T",)
 
+status.register("dpms", format="", color_disabled="#A52A2A")
+
 status.register("pulseaudio", format=" {volume}", multi_colors=True)
 
 status.register("load", format="{avg5} {avg1}")
