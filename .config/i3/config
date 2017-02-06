@@ -161,6 +161,7 @@ bindsym $mod+Pause mode "$mode_system"
 # finds out, if available)
 bar {
         position top
+        #status_command python ~/Code/i3pystatus/i3pystatus/.i3pystatus-i3py.py
         status_command python ~/.config/i3/i3py.py
         strip_workspace_numbers yes
         separator_symbol ":"
