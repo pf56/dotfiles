@@ -2,6 +2,8 @@ from i3pystatus import Status
 from i3pystatus.weather import weathercom
 from i3pystatus import parcel
 
+import config
+
 status = Status()
 
 status.register("clock", format="  %a %F  %T",)
@@ -20,7 +22,7 @@ status.register("network", interface="enp0s25",
                 format_up=" {bytes_sent} MiB/s  {bytes_recv} MiB/s",
                 divisor=1024**2, recv_limit=100000, sent_limit=40000)
 
-status.register("xkblayout", layouts=["de", "us colemak"])
+#status.register("xkblayout", layouts=["de", "us colemak"])
 
 status.register("disk", format=" {avail} GiB",
                 path="/")
@@ -28,7 +30,9 @@ status.register("disk", format=" {avail} GiB",
 status.register("weather", backend=weathercom.Weathercom(location_code="GMXX4347:1:GM", units="metric"), colorize=True,
                 format="{current_temp}°C")
 
-status.register("spotify", format=" {status} {artist} - {title}",
-                format_not_running="")
+status.register("spotify", format=" {status} {artist} - {title}")
+
+status.register("sabnzbd", host="10.0.10.21",
+                api_key=config.sabnzbd_api)
 
 status.run()

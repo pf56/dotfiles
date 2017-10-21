@@ -2,7 +2,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 font pango:Source Code Pro for Powerline Medium 10
 
@@ -66,20 +66,31 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 # focus the child container
 #bindsym $mod+d focus child
 
 # name workspaces
 set $tag1 1:
-set $tag2 2:
+set $tag2 2:
 set $tag3 3:
 set $tag4 4:4
 set $tag5 5:5
 set $tag6 6:6
 set $tag7 7:7
 set $tag8 8:8
-set $tag9 9:9
-set $tag10 10:
+set $tag9 9:
+set $tag10 10:
 
 # switch to workspace
 bindsym $mod+1 workspace $tag1
@@ -183,6 +194,7 @@ new_window pixel
 exec --no-startup-id "setxkbmap de"
 exec --no-startup-id "xrdb ~/.Xresources"
 exec --no-startup-id "sleep 10 ; xmodmap ~/.Xmodmap"
+#exec --no-startup-id "keyledsd --config=~/.config/keyleds/keyledsd.conf"
 
 # start compton to enably vsync etc
 exec --no-startup-id compton -CGb --backend glx --vsync opengl
@@ -191,16 +203,20 @@ exec --no-startup-id compton -CGb --backend glx --vsync opengl
 exec --no-startup-id sh ~/.fehbg
 
 # Workspace assignments
-assign [class="(?i)Skype"] $tag2
+assign [class="(?i)Discord"] $tag2
 assign [class="(?i)Firefox"] $tag3
-assign [class="(?i)KeepassX"] $tag10
+assign [class="(?i)Pidgin"] $tag9
+assign [title="(?i)Thunderbird"] $tag10
 
 # start apps
-exec --no-startup-id /usr/bin/skypeforlinux
-exec --no-startup-id /usr/bin/firefox
-exec --no-startup-id /usr/bin/keepassx2
+exec --no-startup-id /usr/bin/discord
+exec --no-startup-id /usr/bin/pidgin
+exec --no-startup-id /usr/bin/firefox-nightly
+exec --no-startup-id /usr/bin/thunderbird
+
 exec --no-startup-id /usr/bin/steam -silent
 exec --no-startup-id /usr/bin/synergys -f -d WARNING --name pizza --address 192.168.122.1:24800 --config /home/pfriedrich/.synergy/synergy.conf --log .synergy/synergy.log
+exec --no-startup-id /usr/bin/dunst
 
 # solarized dark
 client.focused #859900 #859900 #fdf6e3 #859900
