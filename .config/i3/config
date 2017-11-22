@@ -204,7 +204,7 @@ exec --no-startup-id sh ~/.fehbg
 
 # Workspace assignments
 assign [class="(?i)Discord"] $tag2
-assign [class="(?i)Firefox"] $tag3
+assign [class="(?i)Nightly"] $tag3
 assign [class="(?i)Pidgin"] $tag9
 assign [title="(?i)Thunderbird"] $tag10
 
