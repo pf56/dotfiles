@@ -17,7 +17,6 @@ bindsym $mod+Shift+q kill
 
 # start app launcher
 bindsym $mod+d exec --no-startup-id rofi -show combi
-#dmenu_run -h 20 -nb '#002b36' -x 100 -w 2000
 
 # change focus
 bindsym $mod+j focus left
@@ -76,9 +75,6 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # name workspaces
 set $tag1 1:
@@ -152,8 +148,6 @@ bindsym $mod+r mode "resize"
 # shutdown, reboot, lock
 set $Locker i3lock -c 002b36 && sleep 1
 
-#bindsym $mod+l exec --no-startup-id $locker
-
 set $mode_system System (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $locker, mode "default"
@@ -194,7 +188,6 @@ new_window pixel
 exec --no-startup-id "setxkbmap de"
 exec --no-startup-id "xrdb ~/.Xresources"
 exec --no-startup-id "sleep 10 ; xmodmap ~/.Xmodmap"
-#exec --no-startup-id "keyledsd --config=~/.config/keyleds/keyledsd.conf"
 
 # start compton to enably vsync etc
 exec --no-startup-id compton -CGb --backend glx --vsync opengl
