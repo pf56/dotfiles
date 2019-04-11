@@ -4,7 +4,24 @@
 
 set $mod Mod4
 
-font pango:Source Code Pro for Powerline Medium 10
+font pango:Source Code Pro Medium 10
+
+set $base00 #2e3440
+set $base01 #3b4252
+set $base02 #434c5e
+set $base03 #4c566a
+set $base04 #d8dee9
+set $base05 #e5e9f0
+set $base06 #eceff4
+set $base07 #8fbcbb
+set $base08 #88c0d0
+set $base09 #81a1c1
+set $base0A #5e81ac
+set $base0B #bf616a
+set $base0C #d08770
+set $base0D #ebcb8b
+set $base0E #a3be8c
+set $base0F #b48ead
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -77,16 +94,16 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # name workspaces
-set $tag1 1:
-set $tag2 2:
-set $tag3 3:
+set $tag1 1:1
+set $tag2 2:2
+set $tag3 3:3
 set $tag4 4:4
 set $tag5 5:5
 set $tag6 6:6
 set $tag7 7:7
 set $tag8 8:8
-set $tag9 9:
-set $tag10 10:
+set $tag9 9:9
+set $tag10 10:10
 
 # switch to workspace
 bindsym $mod+1 workspace $tag1
@@ -172,22 +189,28 @@ bar {
         separator_symbol ":"
 
         colors {
-            separator #586e75
-            background #002b36
-            statusline #839496
-            focused_workspace #fdf6e3 #859900 #fdf6e3
-            active_workspace #fdf6e3 #6c71c4 #fdf6e3
-            inactive_workspace #586e75 #93a1a1 #002b36
-            urgent_workspace #d33682 #d33682 #fdf6e3
+            separator $base00
+            background $base01
+            statusline $base04
+            focused_workspace $base05 $base0D $base00
+            active_workspace $base05 $base03 $base00
+            inactive_workspace $base03 $base01 $base05
+            urgent_workspace $base08 $base08 $base00
+            binding_mode $base00 $base0A $base00
         }
 }
 
 new_window pixel
 
+# set aliases
+exec --no-startup-id "alias screenshot='gnome-screenshot --area'"
+
 # set keyboard layout
 exec --no-startup-id "setxkbmap de"
 exec --no-startup-id "xrdb ~/.Xresources"
 exec --no-startup-id "sleep 10 ; xmodmap ~/.Xmodmap"
+
+#exec_always --no-startup-id "sleep 5; $HOME/.config/polybar/launch.sh"
 
 # start compton to enably vsync etc
 exec --no-startup-id compton -CGb --backend glx --vsync opengl
@@ -198,21 +221,26 @@ exec --no-startup-id sh ~/.fehbg
 # Workspace assignments
 assign [class="(?i)Discord"] $tag2
 assign [class="(?i)Nightly"] $tag3
+assign [class="(?i)Kodi"] $tag7
 assign [class="(?i)Pidgin"] $tag9
 assign [title="(?i)Thunderbird"] $tag10
 
+for_window [instance="^origin.exe$" class="Wine"] floating enable, fullscreen disable
+
 # start apps
 exec --no-startup-id /usr/bin/discord
-exec --no-startup-id /usr/bin/pidgin
+#exec --no-startup-id /usr/bin/pidgin
 exec --no-startup-id /usr/bin/firefox-nightly
 exec --no-startup-id /usr/bin/thunderbird
 
 exec --no-startup-id /usr/bin/steam -silent
 exec --no-startup-id /usr/bin/synergys -f -d WARNING --name pizza --address 192.168.122.1:24800 --config /home/pfriedrich/.synergy/synergy.conf --log .synergy/synergy.log
 exec --no-startup-id /usr/bin/dunst
+exec --no-startup-id /usr/bin/keyledsd
 
-# solarized dark
-client.focused #859900 #859900 #fdf6e3 #859900
-client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
-client.unfocused #073642 #073642 #93a1a1 #586e75
-client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background $base07

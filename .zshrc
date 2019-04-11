@@ -1,5 +1,11 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/pfriedrich/.oh-my-zsh
+export ZSH=/home/pfriedrich/.oh-my-zsh
+export DOTNET_ROOT=/opt/dotnet
+export MSBuildSDKsPath=$DOTNET_ROOT/sdk/$($DOTNET_ROOT/dotnet --version)/Sdks
+
+path+=("/home/pfriedrich/.local/bin")
+path+=("/home/pfriedrich/.dotnet/tools")
+export PATH
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -9,7 +15,7 @@ ZSH_THEME="bullet-train"
 
 BULLETTRAIN_PROMPT_ORDER=(
     virtualenv
-    git 
+    git
     dir
     time
 )
@@ -94,3 +100,4 @@ alias ls="ls --color"
 
 export PROJECT_HOME=$HOME/Code
 source /usr/bin/virtualenvwrapper.sh
+source /usr/share/nvm/init-nvm.sh --no-use

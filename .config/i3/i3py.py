@@ -32,7 +32,7 @@ status.register("weather", backend=weathercom.Weathercom(location_code="GMXX4347
 
 status.register("spotify", format=" {status} {artist} - {title}")
 
-status.register("sabnzbd", host="10.0.10.21",
-                api_key=config.sabnzbd_api)
+#status.register("sabnzbd", host="10.0.10.21",
+#                api_key=config.sabnzbd_api)
 
 status.run()
